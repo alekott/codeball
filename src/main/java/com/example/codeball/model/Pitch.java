@@ -1,11 +1,20 @@
 package com.example.codeball.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Pitch {
 
     private String address;
+    @Id
+    @GeneratedValue
     private Integer id;
     private int maxNumberOfPlayers;
     private int minNumberOfPlayers;
+    @Column(unique = true)
     private String name;
     private PitchType pitchType;
 
