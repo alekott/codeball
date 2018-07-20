@@ -1,4 +1,4 @@
-package com.example.codeball;
+package com.example.codeball.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,5 +15,5 @@ public class Game {
     private Integer teamAScore;
     private ArrayList<User> teamBIds;
     private Integer teamBScore;
-    
+
 }

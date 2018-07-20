@@ -1,18 +1,28 @@
-package com.example.codeball;
+package com.example.codeball.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
+    @Column(unique = true)
     private String email;
     private String firstName;
+    @Id
+    @GeneratedValue
     private Integer id;
     private String lastName;
     private String pictureUrl;
     private RoleUser roleUser;
 
-    public User(String email, String firstName, String lastName) {
+    public User(String email, String firstName, String lastName, RoleUser roleUser) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.roleUser = roleUser;
     }
 
     public User() {
