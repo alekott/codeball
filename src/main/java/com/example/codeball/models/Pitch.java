@@ -1,9 +1,13 @@
-package com.example.codeball.model;
+package com.example.codeball.models;
+
+import com.example.codeball.enums.PitchType;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.print.attribute.IntegerSyntax;
 
 @Entity
 public class Pitch {
@@ -18,9 +22,13 @@ public class Pitch {
     private String name;
     private PitchType pitchType;
 
-    public Pitch(String address, String name) {
+    public Pitch(int id, String address, int maxNumberOfPlayers, int minNumberOfPlayers, String name, PitchType pitchType) {
+        this.id = id;
         this.address = address;
+        this.maxNumberOfPlayers = maxNumberOfPlayers;
+        this.minNumberOfPlayers = minNumberOfPlayers;
         this.name = name;
+        this.pitchType = pitchType;
     }
 
     public Pitch() {

@@ -1,9 +1,12 @@
-package com.example.codeball.model;
+package com.example.codeball.models;
+
+import com.example.codeball.enums.Role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -16,13 +19,14 @@ public class User {
     private Integer id;
     private String lastName;
     private String pictureUrl;
-    private RoleUser roleUser;
+    private Role role;
 
-    public User(String email, String firstName, String lastName, RoleUser roleUser) {
+    public User(String email, String firstName, Integer id, String lastName, Role role) {
         this.email = email;
         this.firstName = firstName;
+        this.id = id;
         this.lastName = lastName;
-        this.roleUser = roleUser;
+        this.role = role;
     }
 
     public User() {
@@ -68,11 +72,30 @@ public class User {
         this.pictureUrl = pictureUrl;
     }
 
-    public RoleUser getRoleUser() {
-        return roleUser;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleUser(RoleUser roleUser) {
-        this.roleUser = roleUser;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(email, user.email) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(pictureUrl, user.pictureUrl) &&
+                role == user.role;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(email, firstName, id, lastName, pictureUrl, role);
     }
 }

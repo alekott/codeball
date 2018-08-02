@@ -1,6 +1,6 @@
 package com.example.codeball.controllers;
 
-import com.example.codeball.model.Pitch;
+import com.example.codeball.models.Pitch;
 import com.example.codeball.repositories.PitchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +21,7 @@ public class PitchController {
 
     @PostMapping("/api/pitch")
     public ResponseEntity createPitch(@RequestBody Pitch pitch) {
-        pitchRepository.save(pitch);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(pitchRepository.save(pitch), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/pitch/{id}")

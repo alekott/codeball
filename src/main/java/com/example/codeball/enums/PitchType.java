@@ -1,4 +1,4 @@
-package com.example.codeball.model;
+package com.example.codeball.enums;
 
 public enum PitchType {
     FIRM_GROUND,
